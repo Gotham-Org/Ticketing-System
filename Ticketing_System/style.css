@@ -1,0 +1,260 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: sans-serif;
+}
+
+body{
+    padding: 20px;
+}
+
+:root{
+    --text-color:#306090
+}
+
+.options{
+    margin-top: 10px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    align-items: center;
+    border: 1px solid #bbb;
+}
+
+.options-left{
+    display: flex;
+    padding: 10px 0px;
+}
+
+.options-left button{
+   background: transparent;
+   border: none;
+   display: inline-flex;
+    margin-right: 30px;
+    text-decoration: none;
+    color: var(--text-color);
+    text-align: center;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+.options-left button i{
+    margin-right: 3px;
+}
+
+.options-right{
+    width: 170px;
+    display: flex;
+}
+
+.options-right select{
+    width: 90%;
+    padding: 2px 10px;
+    font-size: 12px;
+    height: 25px;
+}
+
+.options-right i{
+    font-size: 18px;
+    margin-left: 4px;
+    margin-top: 3px;
+}
+
+.container{
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    /* non equal heights  */
+    gap: 2rem;
+    /* background-color: orange; */
+}
+
+.left{
+    width: 66%;
+    /* width: 1000px; */
+}
+
+.c-one{ 
+    background-color: #ddd;
+}
+
+.hold-container{
+    width: 33%;
+}
+
+.hold-scroll{
+    overflow-x: scroll;
+}
+
+.c-two{
+    width: 1000px;
+    background-color: #ddd;
+}
+
+.container-title-bar {
+    background-color: #ddd;
+    border: 1px solid #bbb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+
+.container-icons i{
+    font-size: 20px;
+    margin: 0 -2px;
+    cursor: pointer;
+}
+
+/* table  */
+.c-one .content table, 
+.c-two .content table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+.c-one td, .c-one th,
+.c-two td, .c-two th {
+    text-align: left;
+    padding: 5px;
+    font-size:12px;
+    vertical-align: initial;
+}
+
+
+
+.c-one .content table th, 
+.c-two .content table th {
+    color: var(--text-color);
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+}
+  
+.c-one .content table td, 
+.c-two .content table td{
+    height: 70px;
+}
+  
+.c .content table tr:nth-child(even) {
+    background-color: #eee;
+}
+
+.c th:nth-child(1){
+    /* width: 8%; */
+    width: 70px;
+    /* background-color: pink; */
+}
+.c .content table th:nth-child(2){
+    /* width: 15%; */
+    width: 150px;
+    /* background-color: blue; */
+}
+.c .content table th:nth-child(3){
+    /* width: 10%; */
+    width: 120px;
+}
+
+.c .content table th:nth-child(4){
+    /* width: 10%; */
+    width: 150px;
+
+}
+
+.c .content table th:nth-child(5){
+    /* width: 10%; */
+    width: 80px;
+}
+
+.c .content table td:nth-child(1) a, td:nth-child(2) a, td:nth-child(3) a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.c .content table th:nth-child(6){
+    /* width: 12%; */
+    width: 80px;
+   
+}
+.c .content table th:nth-child(7){
+    /* width: 15%; */
+    width: 150px;
+}
+.c .content table th:nth-child(8), th:nth-child(9){
+    /* width: 10%; */
+    width: 100px;
+}
+
+th i{
+    margin-left: 3px;
+}
+
+
+/* create ticket  */
+#myForm, #clickform{
+    width: 100%;
+    background-color: white;
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #bbb;
+    padding: 50px;
+}
+
+
+.form-group select{
+    width: 100%;
+    height: 25px;
+}
+
+.form-content label{
+    display: flex;
+    text-align: right;
+}
+
+.form-content input, .clickform-data input{
+    height: 25px;
+    width: 100%;
+}
+
+.form-group textarea, .clickform-data textarea{
+    width: 100%;
+}
+
+.form-content button{
+    padding: 3px 15px;
+    float: right;
+}
+
+#showId, #showtitle, #showReq, #showDescr {
+    margin-bottom: 30px;
+}
+
+.update{
+    padding: 0 10px;
+    height: 32px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
