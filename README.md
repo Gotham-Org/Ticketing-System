@@ -6,6 +6,7 @@ The ticketing system allows the user to input as many tickets as possible.
 Frontend: HTML, CSS, JavaScript
 Backend: PHP, SQL
 
+--------------------
 
 Steps:
 Install XAMPP, and start Apache and MySql servers.
