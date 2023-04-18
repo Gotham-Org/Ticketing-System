@@ -6,6 +6,13 @@ The ticketing system allows the user to input as many tickets as possible.
 Frontend: HTML, CSS, JavaScript
 Backend: PHP, SQL
 
-
+Steps:
 Install XAMPP, and start Apache and MySql servers.
+
+Open Explorer in XAMPP and navigate to 'htdocs' folder. Paste Ticketing folder into htdocs
+
+Open browser tab and type 'localhost/phpmyadmin' in URL to access sql database
+Import Table Template
+
+Finally open another browser tab and go to 'localhost/ticketing' folder to run the project.
 
