@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketingSystem</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script type="text/javascript" src="script.js" defer></script>
+</head>
+<body>
+
+    <h3 class="main-title">Ticketing System</h3>
+    
+    <div class="options">
+
+        <div class="options-left">
+            <button onclick="getAll()" class="refresh">
+                <i id="loader" class='bx bx-refresh'></i>
+                Refresh
+            </button>
+            <!-- <button class="editDesktop">
+                <i class='bx bxs-edit-alt'></i>
+                Edit Desktop
+            </button> -->
+            <button class="createTicket" onclick="showForm()">
+                <i class='bx bx-plus'></i>
+                Create Ticket
+            </button>
+            <button class="print" onclick="window.print()">
+                <i class='bx bxs-printer'></i>
+                Print
+            </button>
+        </div>
+        <div class="options-right">
+            <select name="department" id="departments" onchange="getAll()">
+                <option value="noneSelected">Select</option>
+                <option value="ITS">ITS</option>
+                <option value="TAG">TAG</option>
+            </select>
+            <i class='bx bxs-cog'></i>
+        </div>
+        
+    </div>
+    
+    
+    
+    <!-- containers -->
+    <h3 style="padding: 1rem; text-align: center;" id="ifNotSelected"></h3>
+    <div class="container">
+        
+        <div class="left">
+
+            <!-- active  -->
+            <div class="c c-one">
+                <div class="container-title-bar">
+                    <h3 class="container-title"><span class="putCat"></span> Active Tickets</h3>
+                    <div class="container-icons">
+                        <i class='bx bx-info-circle'></i>
+                        <i onclick="javascript:getActive()" id="loader1" class='bx bx-refresh'></i>
+                        <i class='bx bx-x'></i>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <table>
+                        <thead id="thead1" style="cursor:pointer;">
+                            <tr id="tr1">
+                                <th id="1" onclick="sort(this.id)">ID<i class="fa fa-sort"></i></th>
+                                <th id="2">Title<i class="fa fa-sort" style="display:none;"></i></th>
+                                <th id="3" >Requester<i class="fa fa-sort" style="display:none;"></i></th>
+                                <th id="4" >Acct/Dept<i class="fa fa-sort"style="display:none;"></i></th>
+                                <th id="5" >Type<i class="fa fa-sort"style="display:none;"></i></th>
+                                <th id="6" >Status<i class="fa fa-sort"style="display:none;"></i></th>
+                                <th id="7" >Resp Group<i class="fa fa-sort"style="display:none;"></i></th>
+                                <th id="8" >Prim Resp<i class="fa fa-sort"style="display:none;"></i></th>
+                                <th id="9" onclick="sort(this.id)">Modified<i class="fa fa-sort"></i></th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="table-active-body">
+                            <!-- <td><a href="">001</a></td>
+                            <td><a href="">Hello</a></td>
+                            <td><a href="">World</a></td>
+                            <td>HI</td>
+                            <td>Bye</td>
+                            <td>Cye</td>
+                            <td>Dye</td>
+                            <td>Fy</td>
+                            <td>Ny</td> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+       
+
+            <!-- resolved  -->
+            <div class="c c-one" style="margin-top: 50px;">
+                <div class="container-title-bar">
+                    <h3 class="container-title"><span class="putCat"></span> Resolved Tickets</h3>
+                    <div class="container-icons">
+                        <i class='bx bx-info-circle'></i>
+                        <i onclick="javascript:getResolved()" id="loader3" class='bx bx-refresh'></i>
+                        <i class='bx bx-x'></i>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <table>
+                        <thead id="thead3" style="cursor:pointer;">
+                            <tr id="tr3">
+                                <th id="21" onclick="sortResolved(this.id)">ID<i class="fa fa-sort"></i></th>
+                                <th id="22" onclick="sortResolved(this.id)">Title<i class="fa fa-sort" style="display:none;"></i></th>
+                                <th id="23" onclick="sortResolved(this.id)">Requester<i class="fa fa-sort" style="display:none;"></i></th>
+                                <th id="24" onclick="sortResolved(this.id)">Acct/Dept<i class="fa fa-sort" style="display:none;"></i></th>
+                                <th id="25" onclick="sortResolved(this.id)">Type<i class="fa fa-sort" style="display:none;"></i></th>
+                                <th id="26" onclick="sortResolved(this.id)">Status<i class="fa fa-sort" style="display:none;"></i></th>
+                                <th id="27" onclick="sortResolved(this.id)">Resp Group<i class="fa fa-sort" style="display:none;"></i></th>
+                                <th id="28" onclick="sortResolved(this.id)">Prim Resp<i class="fa fa-sort" style="display:none;"></i></th>
+                                <th id="29" onclick="sortResolved(this.id)">Modified<i class="fa fa-sort" ></i></th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="table-resolved-body">
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <!--  hold  -->
+        <div class="hold-container">
+            <div class="container-title-bar">
+                <h3 class="container-title"><span class="putCat"></span> HOLD Tickets</h3>
+                <div class="container-icons">
+                    <i class='bx bx-info-circle'></i>
+                    <i onclick="javascript:getHold()" id="loader2" class='bx bx-refresh'></i>
+                    <i class='bx bx-x'></i>
+                </div>
+            </div>
+            <div class="hold-scroll">
+                <div class="c c-two">
+                    <div class="content">
+                        <table>
+                            <thead id="thead2" style="cursor:pointer;">
+                                <tr id="tr2">
+                                    <th id="11" onclick="sortHold(this.id)">ID<i class="fa fa-sort" ></i></th>
+                                    <th id="12" onclick="sortHold(this.id)">Title<i class="fa fa-sort" style="display:none;"></i></th>
+                                    <th id="13" onclick="sortHold(this.id)">Requester<i class="fa fa-sort" style="display:none;"></i></th>
+                                    <th id="14" onclick="sortHold(this.id)">Acct/Dept<i class="fa fa-sort" style="display:none;"></i></th>
+                                    <th id="15" onclick="sortHold(this.id)">Type<i class="fa fa-sort" style="display:none;"></i></th>
+                                    <th id="16" onclick="sortHold(this.id)">Status<i class="fa fa-sort" style="display:none;"></i></th>
+                                    <th id="17" onclick="sortHold(this.id)">Resp Group<i class="fa fa-sort" style="display:none;"></i></th>
+                                    <th id="18" onclick="sortHold(this.id)">Prim Resp<i class="fa fa-sort" style="display:none;"></i></th>
+                                    <th id="19" onclick="sortHold(this.id)">Modified<i class="fa fa-sort"></i></th>
+                                </tr>
+                            </thead>
+        
+                            <tbody id="table-hold-body">
+                                <!-- <td>hello</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+       
+    </div>
+
+    
+    
+    
+    <div class="none" style="display: none;">
+        
+        <!-- clickform  -->
+        <div id="clickform" class="clickform" style="display: none;">
+            <div class="clickform-data">
+                <h3>ID: </h3>
+                <input id="showId" type="text" value="" disabled>
+                <br/>
+                <h3>Title: </h3>
+                <input id="showTitle" value="" type="text" disabled>
+                <br/>
+                <h3>Requester: </h3>
+                <input id="showReq" value="" type="text" disabled>
+                <br/>
+                <h3>Description: </h3>
+                <textarea id="showDescr" rows="6" type="text" disabled ></textarea>
+                <br/>
+                
+                <!-- !!!!!! This has to be a form  -->
+              
+                <div id="options">
+                    <!-- <form action="updateData.php"></form> -->
+                    <select name="update" id="updateTicket" >
+                        <!-- <option id="default" selected></option> -->
+                        <!-- <option value="new">New</option>
+                        <option value="process">In Process</option>
+                        <option>On Hold</option>
+                        <option value="resolved">Resolved</option> -->
+                    </select>
+                    <button class="update" onclick="updateTicket()">Update</button>
+                </div>
+
+
+            </div>
+        </div>
+
+    <form id="myForm" action="insert.php" method="post">
+        <h3 class="form-title">Create Ticket</h3>
+        <br/>
+        <div class="form-content">
+            <div class="form-group">
+                <label for="categoty">Category: </label>
+                <select name="category">
+                    <option value="ITS">ITS</option>
+                    <option value="TAG">TAG</option>
+                </select>
+            </div>
+           <br/>
+            <div class="form-group">
+                <label for="title">Title: </label>
+                <input type="text" id="title"  name="title">
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="req">Requester: </label>
+                <input type="text" id="req"  name="req">
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="acct">Acct/Dept: </label>
+                <input type="text" id="acct" name="acct">
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="descr">Description: </label>
+                <textarea rows="6" type="text" id="descr" name="descr"></textarea>
+            </div>
+            <br />
+            <button class="update" type="submit">Create</button> 
+        </div>
+    </form>
+
+</div>
+    
+
+</body>
+</html>
